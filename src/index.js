@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import { BookstoreServiceProvider} from "./components/bookstore-service-context/bookstore-service-context";
+import {BookstoreServiceProvider} from "./components/bookstore-service-context/bookstore-service-context";
 import {BrowserRouter as Router} from 'react-router-dom';
 import BookstoreService from "./services/bookstore-service";
 import store from "./store";
