@@ -8,7 +8,21 @@ import compose from "../../utils/compose";
 import Spinner from "../spinner/spinner";
 import ErrorIndicator from "../error-indicator/error-indicator";
 
-class BookList extends React.Component {
+const BookList = ({books}) => {
+    return (
+        <ul className="book-list">
+            {
+                books.map((book) => {
+                    return (
+                        <li key={book.id}><BookListItem book={book}/></li>
+                    )
+                })
+            }
+        </ul>
+    )
+};
+
+class BookListContainer extends React.Component {
 
     componentDidMount() {
         this.props.fetchBooks();
@@ -23,20 +37,9 @@ class BookList extends React.Component {
             return <ErrorIndicator/>;
         }
 
-        return (
-            <ul className="book-list">
-                {
-                    books.map((book) => {
-                        return (
-                            <li key={book.id}><BookListItem book={book}/></li>
-                        )
-                    })
-                }
-            </ul>
-        );
+        return <BookList books={books}/>
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
@@ -55,4 +58,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default compose(
     withBookstoreService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(BookList);
+)(BookListContainer);
