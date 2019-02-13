@@ -1,4 +1,4 @@
-import {FETCH_BOOKS_FAILURE, FETCH_BOOKS_REQUEST, FETCH_BOOKS_SUCCESS} from "./actions";
+import {BOOK_ADDED_TO_CART, FETCH_BOOKS_FAILURE, FETCH_BOOKS_REQUEST, FETCH_BOOKS_SUCCESS} from "./actions";
 
 const booksRequested = () => {
     return {
@@ -27,6 +27,14 @@ const fetchBooks = (dispatch, service) => () => {
         .catch((err) => dispatch(booksError(err)));
 };
 
+const bookAddedToCart = (bookId) => {
+    return {
+        type: BOOK_ADDED_TO_CART,
+        payload: bookId
+    }
+};
+
 export {
-    fetchBooks
+    fetchBooks,
+    bookAddedToCart
 };
